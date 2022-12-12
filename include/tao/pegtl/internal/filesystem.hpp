@@ -41,6 +41,23 @@ namespace tao::pegtl::internal
 
 }  // namespace tao::pegtl::internal
 
+#elif defined( TAO_PEGTL_GHC_FILESYSTEM )
+
+#include <ghc/filesystem.hpp>
+
+namespace tao::pegtl::internal
+{
+   namespace filesystem = ::ghc::filesystem;
+
+   using error_code = ::std::error_code;
+
+   inline const auto& system_category() noexcept
+   {
+      return ::std::system_category();
+   }
+
+}  // namespace tao::pegtl::internal
+
 #else
 
 #include <filesystem>
